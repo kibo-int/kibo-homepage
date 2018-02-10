@@ -3,11 +3,12 @@ import Link from 'gatsby-link';
 
 // Headline Styles
 const headlineStyle = styled.span`
-  color: ${({ blue, white, theme }) => {
-    if (blue) return theme.colors.kiboBlue;
+  color: ${({ orange, white, theme }) => {
+    if (orange) return theme.colors.orange;
     if (white) return theme.colors.white;
-    return theme.colors.kiboNavy;
+    return theme.colors.black;
   }};
+  font-family: 'Oswald', Helvetica, arial, sans-serif;
   margin: 0;
   text-align: ${({ center }) => center && 'center'};
 `;
@@ -57,18 +58,13 @@ const H6 = H6Style.extend`
 // Text Style
 const Text = styled.p`
   color: ${({
-    blue, green, purple, red, teal, white, yellow, theme,
+    orange, white, theme,
   }) => {
-    if (blue) return theme.colors.kiboBlue;
-    if (green) return theme.colors.kiboGreen;
-    if (purple) return theme.colors.kiboPurple;
-    if (red) return theme.colors.kiboRed;
-    if (teal) return theme.colors.kiboTeal;
+    if (orange) return theme.colors.orange;
     if (white) return theme.colors.white;
-    if (yellow) return theme.colors.kiboYellow;
     return theme.colors.bodyText;
   }};
-  font-family: 'Work Sans', Helvetica, arial, sans-serif;
+  font-family: 'Muli', Helvetica, arial, sans-serif;
   font-size:${({ large, small, theme }) => {
     if (large) return theme.bodyText.large.fontSize;
     if (small) return theme.bodyText.small.fontSize;
@@ -90,15 +86,15 @@ const Li = Text.withComponent('li');
 // Link Styles
 const LinkStyle = Text.withComponent('a');
 const LinkText = LinkStyle.extend`
-  color: ${({ theme }) => theme.colors.kiboBlue};
+  color: ${({ theme }) => theme.colors.lightGray};
   &:active {
-    color: ${({ theme }) => theme.colors.kiboBlue600};
+    color: ${({ theme }) => theme.colors.gray};
   }
   &:hover {
-    color: ${({ theme }) => theme.colors.kiboPurple};
+    color: ${({ theme }) => theme.colors.gray};
   }
   &:visited {
-    color: ${({ theme }) => theme.colors.kiboBlue400};
+    color: ${({ theme }) => theme.colors.gray};
   }
 `;
 

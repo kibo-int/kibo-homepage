@@ -8,7 +8,7 @@ export default injectGlobal`
     box-sizing: inherit;
   }
   html {
-    font-family: 'Roboto', Helvetica, arial, sans-serif;
+    font-family: 'Muli', Helvetica, arial, sans-serif;
     box-sizing: border-box;
     font-size: 62.5%;
   }

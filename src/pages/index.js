@@ -1,12 +1,13 @@
 import React from 'react';
-import Link from 'gatsby-link';
+
+import { Title, Text, KiboLink } from '../../static/styles/typography';
 
 const IndexPage = () => (
   <div>
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link>
+    <Title>Hi people</Title>
+    <Text>Welcome to your new Gatsby site.</Text>
+    <Text>Now go build something great.</Text>
+    <KiboLink to="/page-2/">Go to page 2</KiboLink>
   </div>
 );
 
