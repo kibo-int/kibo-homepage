@@ -3,13 +3,15 @@ import Link from 'gatsby-link';
 
 // Headline Styles
 const headlineStyle = styled.span`
-  color: ${({ orange, white, theme }) => {
+  color: ${({
+    orange, gray, white, theme,
+  }) => {
     if (orange) return theme.colors.orange;
     if (white) return theme.colors.white;
-    return theme.colors.black;
+    if (gray) return theme.colors.gray;
+    return theme.colors.darkGray;
   }};
   font-family: 'Oswald', Helvetica, arial, sans-serif;
-  margin: 0;
   text-align: ${({ center }) => center && 'center'};
 `;
 
@@ -58,10 +60,11 @@ const H6 = H6Style.extend`
 // Text Style
 const Text = styled.p`
   color: ${({
-    orange, white, theme,
+    orange, lightGray, white, theme,
   }) => {
     if (orange) return theme.colors.orange;
     if (white) return theme.colors.white;
+    if (lightGray) return theme.colors.lightGray;
     return theme.colors.bodyText;
   }};
   font-family: 'Muli', Helvetica, arial, sans-serif;
@@ -76,7 +79,6 @@ const Text = styled.p`
     if (small) return theme.bodyText.small.lineHeight;
     return theme.bodyText.standard.lineHeight;
   }};
-  margin: 0 0 2rem 0;
   text-align: ${({ center }) => center && 'center'};
 `;
 
@@ -87,10 +89,8 @@ const Li = Text.withComponent('li');
 const LinkStyle = Text.withComponent('a');
 const LinkText = LinkStyle.extend`
   color: ${({ theme }) => theme.colors.lightGray};
+  text-decoration: none;
   &:active {
-    color: ${({ theme }) => theme.colors.gray};
-  }
-  &:hover {
     color: ${({ theme }) => theme.colors.gray};
   }
   &:visited {

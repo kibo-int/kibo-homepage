@@ -11,8 +11,6 @@ import Header from '../components/Header';
 
 const MainStyle = Wrapper.withComponent('main');
 const Main = MainStyle.extend` 
-  /* Takes header height into account */ 
-  padding-top: 12rem;
   `;
 
 const TemplateWrapper = ({ children }) => (
@@ -25,12 +23,9 @@ const TemplateWrapper = ({ children }) => (
         ]}
       />
       <Header />
-      <Main>
+      <Main noPadding>
         {children()}
       </Main>
-      <Wrapper paddingSides>
-        <footer>Footer</footer>
-      </Wrapper>
     </div>
   </ThemeProvider>
 );

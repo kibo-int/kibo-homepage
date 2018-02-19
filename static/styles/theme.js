@@ -1,17 +1,18 @@
 export default {
   colors: {
-    bodyText: '#2c2c2e',
-    lightGray: '#a0a0a0',
-    darkGray: '#1E1D20',
-    gray: '#E9E9E9',
     black: '#000000',
+    bodyText: '#2c2c2e',
+    darkGray: '#1E1D20',
+    gray: '#a0a0a0',
+    lightGray: '#E9E9E9',
     orange: '#ff8939',
     white: '#ffffff',
   },
-  // Misc sizes
+  // Misc
   containerPadding: 7.5,
   gap: 1.5,
-  margins: 0.5,
+  margins: 1,
+  shadow: '0 3px 3px rgba(0,0,0,0.12), 0 3px 2px rgba(0,0,0,0.24)',
   // Typography
   headline: {
     h1: {

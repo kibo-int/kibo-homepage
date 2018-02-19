@@ -2,6 +2,28 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import Link from 'gatsby-link';
 
+// Media Breakpoints
+const sizes = {
+  xSmall: 414,
+  small: 600,
+  medium: 880,
+  tablet: 1024,
+  large: 1280,
+  xLarge: 1440,
+};
+
+const media = Object.keys(sizes).reduce((accumulator, size) => {
+  /* Code below based off of the assumption that the body font-size is 16px */
+  const emSize = sizes[size] / 16;
+  const mediaSize = accumulator;
+  mediaSize[size] = (...args) => css`
+    @media (max-width: ${emSize}em) {
+      ${css(...args)}
+    }
+    `;
+  return mediaSize;
+}, {});
+
 // Flexbox CSS
 const flexbox = css`
   align-items: ${({ alignCenter }) => alignCenter && 'center'};
@@ -51,65 +73,6 @@ const paddingStyle = css`
   }};
   `;
 
-// Button
-const Button = styled.button`
-  ${marginStyle}
-  background: ${({
-    purchase, secondary, tertiary, theme,
-  }) => {
-    if (purchase) return theme.colors.kiboGreen;
-    if (secondary || tertiary) return 'none';
-    return theme.colors.kiboBlue;
-  }};
-  border: ${({ secondary, tertiary, theme }) => {
-    if (secondary) return `2px solid ${theme.colors.kiboBlue}`;
-    if (tertiary) return `2px solid ${theme.colors.white}`;
-    return 'none';
-  }};
-  border-radius: ${({
-    pill,
-    large,
-    medium,
-    small,
-  }) => {
-    if (pill && large) return '2.2rem';
-    if (pill && medium) return '2.1rem';
-    if (pill && small) return '1.7rem';
-    if (pill) return '2rem';
-    return 0;
-  }};
-  color: ${({ secondary, theme }) => (
-    secondary ? theme.colors.kiboBlue : theme.colors.white
-  )};
-  display: inline-block;
-  font-size: ${({ large, medium, small }) => {
-    if (large) return '2.2rem';
-    if (medium) return '1.8rem';
-    if (small) return '1.4rem';
-    return '1.6rem';
-  }};
-  padding: 1.2rem 2.4rem;
-  text-transform: uppercase;
-  &:hover {
-    background: ${({
-    theme, purchase, secondary, tertiary,
-  }) => {
-    if (purchase) return theme.colors.kiboDarkGreen;
-    if (secondary) return theme.colors.kiboBlue;
-    if (tertiary) return theme.colors.white;
-    return theme.colors.kiboDarkBlue;
-  }};
-    color: ${({ theme, tertiary }) => (tertiary ? theme.colors.kiboNavy : theme.colors.white)};
-    cursor: pointer;
-  }
-  `;
-
-const linkButtonStyle = Button.withComponent('a');
-const LinkButton = linkButtonStyle.extend`
-  text-decoration: none;
-  `;
-const KiboButton = LinkButton.withComponent(Link);
-
 // Images
 const FullImg = styled.img`
   width: 100%;
@@ -117,7 +80,6 @@ const FullImg = styled.img`
 
 // Grid
 const Grid = styled.div`
-  ${paddingStyle}
   display: grid;
   grid-column-gap: ${({ noGap, theme }) => (noGap ? 0 : `${theme.gap * 2}rem`)};
   grid-row-gap: ${({ noGap, theme }) => (noGap ? 0 : `${theme.gap * 2}rem`)};
@@ -131,7 +93,28 @@ const GridItem = styled.div`
   ${paddingStyle}
   `;
 
-const Section = Grid.withComponent('section');
+const Section = styled.section`
+  background: ${({
+    orange,
+    gray,
+    darkGray,
+    lightGray,
+    black,
+    theme,
+  }) => {
+    if (orange) return theme.colors.orange;
+    if (gray) return theme.colors.gray;
+    if (black) return theme.colors.black;
+    if (lightGray) return theme.colors.lightGray;
+    if (darkGray) return theme.colors.darkGray;
+    return theme.colors.white;
+  }};
+  padding: ${({ theme }) => theme.containerPadding}rem;
+  `;
+
+const FlexDiv = styled.div`
+  ${flexbox};
+  `;
 
 // Wrapper
 const Wrapper = styled.div`
@@ -142,38 +125,16 @@ const Wrapper = styled.div`
   `;
 
 const Utils = {
+  media,
   flexbox,
   marginStyle,
   paddingStyle,
-  Button,
-  LinkButton,
-  KiboButton,
   FullImg,
   Grid,
   GridItem,
+  FlexDiv,
   Section,
   Wrapper,
 };
 
 module.exports = Utils;
-
-Button.propTypes = {
-  pill: PropTypes.bool,
-  purchase: PropTypes.bool,
-  secondary: PropTypes.bool,
-  tertiary: PropTypes.bool,
-  large: PropTypes.bool,
-  medium: PropTypes.bool,
-  small: PropTypes.bool,
-};
-
-Button.defaultProps = {
-  pill: false,
-  purchase: false,
-  secondary: false,
-  tertiary: false,
-  large: false,
-  medium: false,
-  small: false,
-};
-
