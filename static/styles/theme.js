@@ -18,32 +18,32 @@ export default {
     h1: {
       fontSize: '6.4rem',
       lineHeight: 1.2,
-      weight: 400,
+      weight: 700,
     },
     h2: {
       fontSize: '4.8rem',
       lineHeight: 1.27,
-      weight: 400,
+      weight: 700,
     },
     h3: {
       fontSize: '3.6rem',
       lineHeight: 1.33,
-      weight: 400,
+      weight: 700,
     },
     h4: {
       fontSize: '2.4rem',
       lineHeight: 1.5,
-      weight: 400,
+      weight: 700,
     },
     h5: {
       fontSize: '2.0rem',
       lineHeight: 1.55,
-      weight: 400,
+      weight: 700,
     },
     h6: {
       fontSize: '1.8rem',
       lineHeight: 1.44,
-      weight: 400,
+      weight: 700,
     },
   },
   bodyText: {

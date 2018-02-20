@@ -2,17 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 import Link from 'gatsby-link';
 import Img from 'gatsby-image';
+import { FormattedMessage } from 'react-intl';
 
 import '../../static/fontawesome/fontawesome.min';
 import '../../static/fontawesome/fa-solid.min';
 import '../../static/fontawesome/fa-brands.min';
 import '../../static/fontawesome/fa-regular.min';
 
-import { Title, H2, H3, Text, LinkText } from '../../static/styles/typography';
+import { Title, H2, H3, H5, Text, LinkText } from '../../static/styles/typography';
 import { flexbox, Grid, GridItem, Section } from '../../static/styles/utils';
 
 const Hero = styled.div`
-  background: ${({ theme }) => theme.colors.orange};
+  background: url("/img/city.jpeg") top;
+  background-size: cover;
   padding: 30rem ${({ theme }) => theme.containerPadding}rem 20rem ${({ theme }) => theme.containerPadding}rem;
   text-align: center;
 `;
@@ -27,7 +29,7 @@ const WorkSection = Section.extend`
 `;
 
 const Overlay = styled.div`
-    background-color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.gray};
     height: 100%;
     left: 0;
     top: 0;
@@ -67,9 +69,13 @@ const ProjectTitle = H2.extend`
   -ms-transform: translate(-50%, -50%);
 `;
 
-const ContactSection = Section.extend`
+const WorkWithUsSection = Section.extend`
 `;
 
+const ContactSection = Section.extend`
+  background: linear-gradient(rgba(255, 255, 255, 0.9),rgba(255, 255, 255, 0.9)), url("/img/world.png") center;
+  
+`;
 
 const Footer = styled.footer`
   ${flexbox};
@@ -89,8 +95,7 @@ const IconContainer = styled.div`
 `;
 
 const EmailIconContainer = styled.div`
-  color: ${({ theme }) => theme.colors.white};
-  margin-right: ${({ theme }) => theme.margins};
+  text-align: center;
 `;
 
 const SocialLink = styled.a`
@@ -98,31 +103,46 @@ const SocialLink = styled.a`
   margin: ${({ theme }) => theme.margins}rem;
 `;
 
+const ResponsiveImg = styled.img`
+  width: 100%;
+`;
+
+const unreadCount = 100;
+const name = 'Eric';
+
 const IndexPage = ({ data }) => (
   <div>
     <Hero>
       <Title white>Kibo Localization</Title>
-      <Text white>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero tenetur ratione eius repellendus. Harum fuga beatae voluptatem quis cum, dolor modi ratione nobis in quas. Illo earum repudiandae quaerat culpa.</Text>
+      <h2>
+        {/* <FormattedMessage
+          id="welcome"
+          defaultMessage={'Hello {name}, you have {unreadCount, number} {unreadCount, plural, one {message} other {messages}}'}
+          values={{ name: <b>{name}</b>, unreadCount }}
+        /> */}
+      </h2>
+      <H5 white>Expand your reach</H5>
     </Hero>
 
     <AboutSection id="about" lightGray>
       <Grid cols={2}>
+        <ResponsiveImg src="/img/phone.jpeg" alt="" />
         <GridItem col={2}>
           <H2>ABOUT</H2>
-          <Text>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero tenetur ratione eius repellendus. Harum fuga beatae voluptatem quis cum, dolor modi ratione nobis in quas. Illo earum repudiandae quaerat culpa.</Text>
+          <Text>We provide linguistic solutions for small to medium projects, including everything from translation, to interpretation, and much more.</Text>
         </GridItem>
       </Grid>
     </AboutSection>
 
-    <ServicesSection id="services">
-      <H2 center>SERVICES</H2>
+    <ServicesSection id="services" black>
+      <H2 center white>SERVICES</H2>
       <Grid cols={3}>
         <GridItem>
           <IconContainer>
             <i className="fas fa-book fa-3x" />
           </IconContainer>
           <H3 center gray>Translation</H3>
-          <Text center>We can translate books, apps, digital media, videos and more! Just let us know what languages you need and we will take care of the rest.</Text>
+          <Text center white>We can translate books, apps, digital media, videos and more! Just let us know what languages you need and we will take care of the rest.</Text>
         </GridItem>
 
         <GridItem>
@@ -130,7 +150,7 @@ const IndexPage = ({ data }) => (
             <i className="fas fa-comments fa-3x" />
           </IconContainer>
           <H3 center gray>Interpretation</H3>
-          <Text center>Need a last minute interpreter for your big presentation? We have professionals on standby waiting to assist you.</Text>
+          <Text center white>Need a last minute interpreter for your big presentation? We have professionals on standby waiting to assist you.</Text>
         </GridItem>
 
         <GridItem>
@@ -138,13 +158,13 @@ const IndexPage = ({ data }) => (
             <i className="fas fa-globe fa-3x" />
           </IconContainer>
           <H3 center gray>Other Services</H3>
-          <Text center>Haven't seen what you are looking for yet? We also provideo other services such as quality assurance website localization and image localization.</Text>
+          <Text center white>Haven't seen what you are looking for yet? We also provideo other services such as quality assurance website localization and image localization.</Text>
         </GridItem>
       </Grid>
     </ServicesSection>
 
-    <WorkSection id="work" black>
-      <H2 white>WORK</H2>
+    {/* <WorkSection id="work">
+      <H2>WORK</H2>
       <ProjectGrid cols={2}>
         {data.allMarkdownRemark.edges.map(project => (
           <Project key={project.node.frontmatter.path}>
@@ -162,32 +182,34 @@ const IndexPage = ({ data }) => (
           </Project>
         ))}
       </ProjectGrid>
-    </WorkSection>
+    </WorkSection> */}
 
-    <ContactSection id="contact" orange>
+    <WorkWithUsSection id="contact" orange>
       <Grid cols={2}>
         <GridItem>
-          <H2 white>CONTACT</H2>
-          <Text white>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa, molestiae labore incidunt blanditiis, repellat itaque modi nam accusantium, provident numquam a laborum alias! Quam molestiae aliquid quos veritatis labore fugit.</Text>
-          <div>
-            <LinkText href="mailto:ericssartorius@gmail.com">
-              <i className="fas fa-envelope fa-lg" /> ericssartorius@gmail.com
-            </LinkText>
-          </div>
+          <H2 white>WORK WITH US</H2>
+          <Text white>We are looking for translators of any language pair to join us. All we need is your name, contact, and a few other bits of information concerning your background in translation to get started. If you are interested, please contact us <LinkText href="mailto:info@kibo-int.com">here</LinkText>.
+          </Text>
         </GridItem>
+        <ResponsiveImg src="/img/people.jpeg" alt="" />
       </Grid>
+    </WorkWithUsSection>
+
+    <ContactSection id="contact">
+      <H2 black center>CONTACT</H2>
+      <EmailIconContainer>
+        <LinkText orange href="mailto:info@kibo-int.com">info@kibo-int.com
+        </LinkText>
+      </EmailIconContainer>
     </ContactSection>
 
     <Footer column>
       <FooterContainer center>
-        <SocialLink href="https://www.facebook.com">
+        <SocialLink href="https://www.facebook.com/kiboint">
           <i className="fab fa-facebook-f fa-lg" />
         </SocialLink>
-        <SocialLink href="https://www.twitter.com">
+        <SocialLink href="https://www.twitter.com/kibo_int">
           <i className="fab fa-twitter fa-lg" />
-        </SocialLink>
-        <SocialLink href="https://www.linkedin.com">
-          <i className="fab fa-linkedin-in fa-lg" />
         </SocialLink>
       </FooterContainer>
       <Text small center>Kibo International - Copyright 2018</Text>

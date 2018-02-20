@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { ThemeProvider } from 'styled-components';
+import { IntlProvider } from 'react-intl';
 
 import theme from '../../static/styles/theme';
 import '../../static/styles/global';
@@ -14,20 +15,22 @@ const Main = MainStyle.extend`
   `;
 
 const TemplateWrapper = ({ children }) => (
-  <ThemeProvider theme={theme}>
-    <div>
-      <Helmet
-        title=""
-        meta={[
-          { name: 'description', content: '' },
-        ]}
-      />
-      <Header />
-      <Main noPadding>
-        {children()}
-      </Main>
-    </div>
-  </ThemeProvider>
+  <IntlProvider locale="en">
+    <ThemeProvider theme={theme}>
+      <div>
+        <Helmet
+          title=""
+          meta={[
+            { name: 'description', content: '' },
+          ]}
+        />
+        <Header />
+        <Main noPadding>
+          {children()}
+        </Main>
+      </div>
+    </ThemeProvider>
+  </IntlProvider>
 );
 
 TemplateWrapper.propTypes = {

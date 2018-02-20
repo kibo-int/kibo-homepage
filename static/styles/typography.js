@@ -88,8 +88,7 @@ const Li = Text.withComponent('li');
 // Link Styles
 const LinkStyle = Text.withComponent('a');
 const LinkText = LinkStyle.extend`
-  color: ${({ theme }) => theme.colors.lightGray};
-  text-decoration: none;
+  color: ${({ orange, theme }) => (orange ? theme.colors.orange : theme.colors.lightGray)};
   &:active {
     color: ${({ theme }) => theme.colors.gray};
   }
