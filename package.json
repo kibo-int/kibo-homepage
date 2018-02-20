@@ -20,6 +20,7 @@
     "gatsby-source-filesystem": "^1.5.14",
     "gatsby-transformer-remark": "^1.7.32",
     "gatsby-transformer-sharp": "^1.6.16",
+    "gh-pages": "^1.1.0",
     "prop-types": "^15.6.0",
     "react": "16.2.0",
     "react-dom": "^16.2.0",
@@ -36,7 +37,8 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "serve": "gatsby serve",
-    "lint": "eslint . --ext .js"
+    "lint": "eslint . --ext .js",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
