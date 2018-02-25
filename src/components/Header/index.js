@@ -59,7 +59,7 @@ const Header = () => (
     </a>
 
     <Nav>
-      <NavItem href="#about">About</NavItem>
+      <NavItem href="#about">Mission</NavItem>
       <NavItem href="#services">Services</NavItem>
       {/* <NavItem href="#work">Work</NavItem> */}
       <NavItem href="#contact">Contact</NavItem>

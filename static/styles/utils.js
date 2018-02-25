@@ -80,17 +80,28 @@ const FullImg = styled.img`
 
 // Grid
 const Grid = styled.div`
+  align-items: center;
+  justify-items: center;
   display: grid;
   grid-column-gap: ${({ noGap, theme }) => (noGap ? 0 : `${theme.gap * 2}rem`)};
   grid-row-gap: ${({ noGap, theme }) => (noGap ? 0 : `${theme.gap * 2}rem`)};
 
   grid-template-columns: ${({ cols }) =>
     (cols > 1 ? `repeat(${cols}, 1fr)` : '1fr 66% 1fr')};
+
+  ${media.medium`
+      grid-template-columns: 1fr;
+  `};
   `;
 
 const GridItem = styled.div`
   grid-column: ${({ col, center }) => (center ? 2 : col)};
   ${paddingStyle}
+
+
+  ${media.medium`
+    grid-column: 1;
+  `};
   `;
 
 const Section = styled.section`
@@ -110,6 +121,14 @@ const Section = styled.section`
     return theme.colors.white;
   }};
   padding: ${({ theme }) => theme.containerPadding}rem;
+
+  ${media.medium`
+    padding: 5rem 3rem;
+    }};
+  `};
+  ${media.small`
+    padding: 5rem 2rem;
+  `};
   `;
 
 const FlexDiv = styled.div`

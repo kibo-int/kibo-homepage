@@ -14,7 +14,7 @@ module.exports = {
       options: {
         fonts: [
           'Oswald:400,700',
-          'Muli:300,400',
+          'Muli:300,400,800',
         ],
       },
     },
